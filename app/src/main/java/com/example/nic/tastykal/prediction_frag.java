@@ -80,7 +80,7 @@ public class prediction_frag extends Fragment implements View.OnClickListener {
         moviedatabase m = new moviedatabase(getActivity());
 
         ArrayList<Movie> movilist = (ArrayList<Movie>) m.getallmovie();
-        
+
         // populate the layout with movielist elements here
 
         // generate the ml weight matrix

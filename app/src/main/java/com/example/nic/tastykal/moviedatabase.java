@@ -120,4 +120,17 @@ public class moviedatabase extends SQLiteOpenHelper {
         // return contact list
         return userlist;
     }
+
+    public double getactorlikes(String actorname)
+    {
+
+        //get fb likes from table given name selected from spinner
+        return 0.0;
+    }
+    public double getdirectorlikes(String directorname)
+    {
+        return 0.0;
+    }
+
+
 }
