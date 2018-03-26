@@ -123,9 +123,24 @@ public class moviedatabase extends SQLiteOpenHelper {
 
     public double getactorlikes(String actorname)
     {
+        //RAW CODE NOT TESTED NEEDS TO BE EDITED BUT IDEA IS CLEAR
+        String selectQuery = "SELECT  * FROM " + TABLENAME+ " WHERE actor1_name = '"+actorname+"'";
 
-        //get fb likes from table given name selected from spinner
-        return 0.0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        double val=0.0;
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+
+                val = cursor.getDouble(cursor.getColumnIndex(ACTOR1));
+
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return val;
+
     }
     public double getdirectorlikes(String directorname)
     {
