@@ -10,28 +10,10 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/movielist"
+        <WebView
+            android:id="@+id/imdb"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_weight="1">
-
-        </ListView>
-
-        <Button
-            android:id="@+id/addm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="add movie" />
-
-        <Button
-            android:id="@+id/removem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="remove movie" />
-
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

@@ -1,29 +1,24 @@
 package com.example.nic.tastykal;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.database.SQLException;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by nic on 3/24/18.
+ * Created by nic on 4/5/18.
  */
 
-public class moviedatabase extends SQLiteOpenHelper {
+public class runthis {
+    Cursor cursor = null;
 
-    private static final int DATABASE_VERSION = 1;
-
-    // Database Name
-    private static final String DATABASE_NAME = "moviedb";
-
-    // movie table name
-    private static final String TABLENAME = "MOVIEMETADATA";
-
-    // movie Table Columns names
     private static final String YEAR = "title_year";
     private static final String DIRECTOR = "director_facebook_likes";
     private static final String DURATION = "duration";
@@ -35,52 +30,23 @@ public class moviedatabase extends SQLiteOpenHelper {
 
     private static final String IMDB = "imdb_score";
 
-    public moviedatabase(Context contex) {
-        super(contex, DATABASE_NAME, null, DATABASE_VERSION);
-    }
+    public List<Movie> runthiss(Context con) throws IOException {
 
-    //creating Tables
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-        String CREATE_STUDENT_DETAIL_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLENAME + "("
-                + DIRECTOR + " REAL,"
-                + ACTOR3 + " REAL,"
-                + ACTOR1 + " REAL,"
-                + FACES + " REAL,"
-                + BUDGET + " REAL,"
-                + YEAR + " REAL,"
-                + ACTOR2 + " REAL,"
-                + IMDB + " REAL" +")";
-
-        db.execSQL(CREATE_STUDENT_DETAIL_TABLE);
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLENAME);
-
-        // Create tables again
-        onCreate(db);
-    }
-
-    public List<Movie> getallmovie() {
-
+        DatabaseHelper myDbHelper = new DatabaseHelper(con);
+        try {
+            myDbHelper.createDataBase();
+        } catch (Exception ioe) {
+            Log.e("unable to create" , "database");
+        }
+        try {
+            myDbHelper.openDataBase();
+        } catch (SQLException sqle) {
+            Log.e("unable to open" , "database");
+        }
         List<Movie> userlist = new ArrayList<Movie>();
-
-        // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLENAME;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        // looping through all rows and adding to list
+        cursor = myDbHelper.query("MOVIEMETADATA", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
-
                 Movie stdnt = new Movie();
                 stdnt.ACTOR1 = cursor.getDouble(cursor.getColumnIndex(ACTOR1));
                 stdnt.ACTOR2 = cursor.getDouble(cursor.getColumnIndex(ACTOR2));
@@ -91,13 +57,9 @@ public class moviedatabase extends SQLiteOpenHelper {
                 stdnt.IMDB=cursor.getDouble(cursor.getColumnIndex(IMDB));
                 stdnt.BUDGET=cursor.getDouble(cursor.getColumnIndex(BUDGET));
                 stdnt.YEAR=cursor.getDouble(cursor.getColumnIndex(YEAR));
-
                 userlist.add(stdnt);
-
             } while (cursor.moveToNext());
         }
-
-        // return contact list
         return userlist;
     }
 

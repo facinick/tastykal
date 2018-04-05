@@ -123,6 +123,7 @@ public class landingpage extends Activity {
                 myIntent.putExtra("password", user.password);
 
                 landingpage.this.startActivity(myIntent);
+                finish();
 
             }
 
@@ -131,10 +132,6 @@ public class landingpage extends Activity {
             Toast.makeText(getApplicationContext(), "invalid credentials", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
-
 
 
     public void toaster(String message)

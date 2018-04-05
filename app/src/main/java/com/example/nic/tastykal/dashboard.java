@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class dashboard extends AppCompatActivity {
 
@@ -22,7 +24,7 @@ public class dashboard extends AppCompatActivity {
     Fragment frag3;
     Fragment active;
     FragmentManager ft;
-
+    boolean doubleBackToExitPressedOnce = false;
 
     private static final String SELECTED_ITEM = "arg_selected_item";
 
@@ -88,6 +90,7 @@ public class dashboard extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
+
     @Override
     public void onBackPressed() {
         MenuItem homeItem = mBottomNav.getMenu().getItem(0);
@@ -95,8 +98,23 @@ public class dashboard extends AppCompatActivity {
             // select home item
             selectFragment(homeItem);
         } else {
-            super.onBackPressed();
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce=false;
+                }
+            }, 2000);
         }
+
     }
 
     private void selectFragment(MenuItem item) {

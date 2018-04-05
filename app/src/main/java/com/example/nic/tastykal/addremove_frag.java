@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -21,22 +22,19 @@ public class addremove_frag extends Fragment {
 
         View v = inflater.inflate(R.layout.addremove_frag_layout, container, false);
 
-        ((Button) v.findViewById(R.id.addm)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        WebView imdb = (WebView) v.findViewById(R.id.imdb);
 
-                Toast.makeText(getActivity(), "Button1 clicked.", Toast.LENGTH_SHORT).show();
-            }
-        });
+        imdb.getSettings().setDomStorageEnabled(true);
 
-        ((Button) v.findViewById(R.id.removem)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        imdb.getSettings().setJavaScriptEnabled(true);
 
-                Toast.makeText(getActivity(), "Button2 clicked.", Toast.LENGTH_SHORT).show();
-            }
-        });
-return v;
+        imdb.getSettings().setLoadsImagesAutomatically(true);
+
+        imdb.loadUrl("https://www.themoviedb.org/movie");
+
+
+
+     return v;
 
     }
 }

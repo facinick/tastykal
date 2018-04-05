@@ -12,15 +12,14 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:gravity="center"
             android:text="your recommendations" />
 
-        <GridView
+        <ListView
+            android:id="@+id/movielist"
             android:layout_width="match_parent"
-            android:layout_height="400dp">
-
-        </GridView>
+            android:layout_height="400dp" />
 
         <Button
             android:id="@+id/recommend"
