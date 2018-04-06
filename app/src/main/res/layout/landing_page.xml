@@ -9,10 +9,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/base"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="150dp">
+        android:paddingTop="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="username" />
+                android:text="Enter Username"
+                android:textColor="@color/TEXTCOLOR" />
 
             <EditText
                 android:id="@+id/username"
@@ -33,7 +36,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:textColor="@color/TEXTCOLOR"
                 tools:layout_editor_absoluteX="61dp"
                 tools:layout_editor_absoluteY="102dp" />
 
@@ -42,56 +45,71 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="70dp">
 
             <TextView
                 android:id="@+id/nam"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="password" />
+                android:text="Enter Password"
+                android:textColor="@color/TEXTCOLOR" />
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name"
-                tools:layout_editor_absoluteX="61dp"
-                tools:layout_editor_absoluteY="158dp" />
+                android:inputType="textPassword"
+                android:textColor="@color/TEXTCOLOR" />
+
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/signup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_weight="1"
+                android:background="@drawable/round_button"
                 android:onClick="signup"
-                android:text="signup"
+                android:text="Register"
+                android:textColor="@color/TEXTCOLOR"
                 tools:layout_editor_absoluteX="126dp"
                 tools:layout_editor_absoluteY="302dp" />
 
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
             <Button
                 android:id="@+id/signin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_weight="1"
+                android:background="@drawable/round_button"
                 android:onClick="signin"
-                android:text="sgnin" />
+                android:text="Login"
+                android:textColor="@color/TEXTCOLOR" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/quote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="50dp" />
+            android:gravity="center"
+            android:paddingTop="50dp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/TEXTCOLOR"
+            android:textSize="30sp" />
 
     </LinearLayout>
 

@@ -19,10 +19,10 @@ public class runthis0 {
     likesloader myDbHelper;
 
     private static final String ACTOR_NAME_T0 = "ACTOR_NAME_T0";
-    private static final String ACTOR_LIKE__T0 = "ACTOR_LIKE__T0";
+    private static final String ACTOR_LIKE_T0 = "ACTOR_LIKE_T0";
 
-    private static final String DIRECTOR_NAME__T1 = "DIRECTOR_NAME__T1";
-    private static final String DIRECTOR_LIKE__T1 = "DIRECTOR_LIKE__T1";
+    private static final String DIRECTOR_NAME_T1 = "DIRECTOR_NAME_T1";
+    private static final String DIRECTOR_LIKE_T1 = "DIRECTOR_LIKE_T1";
 
     public void runthiss0(Context con) throws IOException {
 
@@ -44,7 +44,7 @@ public class runthis0 {
     {
 
         String[] projection = {
-                ACTOR_LIKE__T0
+                ACTOR_LIKE_T0
         };
         String selection = ACTOR_NAME_T0 + " = ?";
         String[] selectionArgs = {actorname};
@@ -53,7 +53,7 @@ public class runthis0 {
         double val = 0.0;
         if (cursor.moveToFirst()) {
             do {
-                val = cursor.getDouble(cursor.getColumnIndex(ACTOR_LIKE__T0));
+                val = cursor.getDouble(cursor.getColumnIndex(ACTOR_LIKE_T0));
 
             } while (cursor.moveToNext());
         }
@@ -63,16 +63,16 @@ public class runthis0 {
     }
     public double getdirectorlikes(String directorname) {
         String[] projection = {
-                DIRECTOR_LIKE__T1
+                DIRECTOR_LIKE_T1
         };
-        String selection = DIRECTOR_NAME__T1 + " = ?";
+        String selection = DIRECTOR_NAME_T1 + " = ?";
         String[] selectionArgs = {directorname};
         cursor = myDbHelper.query("DIRECTOR", projection, selection, selectionArgs, null, null, null);
 
         double val = 0.0;
         if (cursor.moveToFirst()) {
             do {
-                val = cursor.getDouble(cursor.getColumnIndex(DIRECTOR_LIKE__T1));
+                val = cursor.getDouble(cursor.getColumnIndex(DIRECTOR_LIKE_T1));
 
             } while (cursor.moveToNext());
         }

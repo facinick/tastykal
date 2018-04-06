@@ -58,9 +58,9 @@ public class dashboard extends AppCompatActivity {
 
 
         ft.beginTransaction().add(R.id.container, frag3, frag3.getTag()).commit();
+
         ft.beginTransaction().add(R.id.container, frag2, frag2.getTag()).commit();
         ft.beginTransaction().add(R.id.container, frag1, frag1.getTag()).commit();
-
 
 
         mBottomNav = (BottomNavigationView) findViewById(R.id.navigation);

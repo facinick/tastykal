@@ -1,6 +1,7 @@
 package com.example.nic.tastykal;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +23,7 @@ import java.util.regex.Pattern;
 public class landingpage extends Activity {
 
 
+    private ProgressDialog pd = null;
     EditText username;
     EditText password;
     private Pattern pattern;
@@ -35,7 +37,7 @@ public class landingpage extends Activity {
 
     String[] quotes = new String[] {"Frankly, my dear, I don't give a damn. - Gone with the Wind", "I'm gonna make him an offer he can't refuse. - The Godfather","Here's looking at you, kid. - Casablanca","I love the smell of napalm in the morning. - Apocalypse Now", "I am big! It's the pictures that got small. - Sunset Boulevard", "A boy's best friend is his mother. - Psycho", "As God is my witness, I'll never be hungry again. - Gone with the Wind","Get your stinking paws off me, you damned dirty ape. - Planet of the Apes", "I feel the need—the need for speed! - Top Gun", "Life is a banquet, and most poor suckers are starving to death! - Auntie Mame", "There's no crying in baseball! - A League of Their Own", "Bond. James Bond. - Dr no", "Made it, Ma! Top of the world! - White Heat", "Love means never having to say you're sorry. - Love Story","Greed, for lack of a better word, is good. - Wall Street", "Dont be afraid to catch feels, bacchi! - shriyans kapoor", "May the force be with you. - masoom bhansali", "pawan you bastard! - Saloni suchdev", "what you're gonna do with that big fat butt? wiggle wiggle! - jason derulo" , "I'm the king of the world! - TITANIC", "I want you to hit me as hard as you can. - Fight Club", "I am Jacks complete lack of surprise! - Fight Club", "We rob banks. - BONNIE AND CLYDE", "Hasta la vista, baby. - Terminator 2", "Nobody puts Baby in a corner. - Dirty Dancing" };
     Handler handler = new Handler();
-    int delay = 10000; //milliseconds
+    int delay = 3000; //milliseconds
     String usernamevalidationregex = "^[a-z0-9_-]{5,15}$";
     String passwordvalidationregex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&+=])(?=\\S+$).{5,15}$";
 
@@ -59,6 +61,7 @@ public class landingpage extends Activity {
                 handler.postDelayed(this, delay);
             }
         }, delay);
+
 
 
     }
@@ -95,7 +98,7 @@ public class landingpage extends Activity {
         }
         else{
 
-            Toast.makeText(getApplicationContext(), "username and password no not meet security standards.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "USERNAME and PASSWORD do not meet security standards.", Toast.LENGTH_SHORT).show();
 
         }
 
@@ -105,8 +108,8 @@ public class landingpage extends Activity {
         String un = username.getText().toString();
         String pw = password.getText().toString();
 
-        un = "userhu";
-        pw = "abc123@";
+//        un = "userhu";
+//        pw = "abc123@";
         User user = new User(un,pw);
 
         int check = 0;
@@ -117,6 +120,7 @@ public class landingpage extends Activity {
             if(list.get(i).username.equals(user.username) && list.get(i).password.equals(user.password)  )
             {
                 check++;
+                this.pd = ProgressDialog.show(this, "TMDB","Loading database...", true, false);
 
                 Intent myIntent = new Intent(landingpage.this, dashboard.class);
                 myIntent.putExtra("username", user.username); //Optional parameters
@@ -129,7 +133,7 @@ public class landingpage extends Activity {
 
         }
         if( check == 0 ) {
-            Toast.makeText(getApplicationContext(), "invalid credentials", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "INVALID CREDENTIALS", Toast.LENGTH_SHORT).show();
         }
     }
 

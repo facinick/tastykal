@@ -7,7 +7,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#99daF2"
         android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Search..."
+            android:gravity="center"
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/textView"
@@ -19,14 +29,16 @@
         <ListView
             android:id="@+id/movielist"
             android:layout_width="match_parent"
-            android:layout_height="400dp" />
+            android:layout_height="350dp" />
 
         <Button
             android:id="@+id/recommend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="recommend me!" />
+            android:background="@color/yel"
+            android:text="recommend me!"
+            android:textColor="@color/base" />
 
     </LinearLayout>
 

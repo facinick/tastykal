@@ -91,7 +91,7 @@ public class runthis2 {
 
         if (cursor.moveToFirst()) {
             do {
-                String insertQuery = "insert into USERGENRE values ( '"+cursor.getString(   0)+"','userhu'  ) ";
+                String insertQuery = "insert into USERGENRE values ( '"+cursor.getString(   0)+"','"+username+"'  ) ";
 
                 Log.e("randi", cursor.getString(0));
 
@@ -101,7 +101,7 @@ public class runthis2 {
         }
         db.close();
     }
-    public void loadusergenremap()
+    public ArrayList<String> loadusergenremap()
     {
 
        // Toast.makeText(con, "tapped",Toast.LENGTH_SHORT).show();
@@ -110,7 +110,7 @@ public class runthis2 {
 
         try{
 
-            String sql = "select GENRE_T3 from USERGENRE where USER_T3 = 'userhu'";
+            String sql = "select GENRE_T3 from USERGENRE where USER_T3 = '"+username+"'";
 
             SQLiteDatabase db = myDbHelper.getWritableDatabase();
 
@@ -162,7 +162,7 @@ public class runthis2 {
 
         Log.e("MAP",xyz);
 
-        String sql1 = "select distinct(MOVIE_NAME_T2) from MOVIEGENRE where GENRE_T2 in "+xyz+" group by MOVIE_NAME_T2 LIMIT 20";
+        String sql1 = "select distinct(MOVIE_NAME_T2) from MOVIEGENRE where GENRE_T2 in "+xyz+" group by MOVIE_NAME_T2 ORDER BY RANDOM() LIMIT 20";
 
 
         SQLiteDatabase db = myDbHelper.getWritableDatabase();
@@ -184,7 +184,7 @@ public class runthis2 {
         }
 
 
-        // array list called movies has best movies we neeed
+        return movies;
         
 
 

@@ -6,4 +6,8 @@
     <color name="color_home">#009688</color>
     <color name="color_search">#2196F3</color>
     <color name="color_notifications">#9C27B0</color>
+    <color name="base">#081c24</color>
+    <color name="TEXTCOLOR">#01d277</color>
+    <color name="BUTTON">#3e6e82</color>
+    <color name="yel">#fef19b</color>
 </resources>
